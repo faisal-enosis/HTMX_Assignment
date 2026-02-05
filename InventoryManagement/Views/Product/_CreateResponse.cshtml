@@ -1,0 +1,13 @@
+﻿@model ProductViewModel
+
+<div id="add-product-form">
+    @await Html.PartialAsync("_AddProductForm", new ProductViewModel())
+</div>
+
+<template>
+    <tbody hx-swap-oob="beforeend:#product-table-body">
+        @await Html.PartialAsync("_ProductRow", Model)
+    </tbody>
+</template>
+
+@await Html.PartialAsync("_InventoryTotalOob")

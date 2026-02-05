@@ -1,0 +1,36 @@
+﻿@model ProductViewModel
+
+<tr id="product-@Model.Id">
+    <td>
+        <input name="Name" value="@Model.Name" />
+        <div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </td>
+
+    <td>
+        <input name="Description" value="@Model.Description" />
+    </td>
+
+    <td>
+        <input name="Price" value="@Model.Price" />
+        <div>
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+    </td>
+
+    <td>
+        <button hx-put="/Product/Edit/@Model.Id"
+                hx-target="closest tr"
+                hx-include="closest tr"
+                hx-swap="outerHTML">
+            Save
+        </button>
+
+        <button hx-get="/Product/ReadOnly/@Model.Id"
+                hx-target="closest tr"
+                hx-swap="outerHTML">
+            Cancel
+        </button>
+    </td>
+</tr>

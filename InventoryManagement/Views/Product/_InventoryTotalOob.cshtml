@@ -1,0 +1,4 @@
+﻿@inject IProductService ProductService
+<div class="navbar-brand text-end" id="inventory-total" hx-swap-oob="true">
+    Total Price: $@await ProductService.GetTotalInventoryValueAsync()
+</div>

@@ -1,0 +1,21 @@
+﻿@model ProductViewModel
+
+<tr id="product-@Model.Id">
+    <td>@Model.Name</td>
+    <td>@Model.Description</td>
+    <td>$@Model.Price</td>
+    <td>
+        <button hx-get="/Product/Edit/@Model.Id"
+                hx-target="closest tr"
+                hx-swap="outerHTML">
+            Edit
+        </button>
+
+        <button hx-delete="/Product/Delete/@Model.Id"
+                hx-confirm="Are you sure?"
+                hx-target="closest tr"
+                hx-swap="outerHTML">
+            Delete
+        </button>
+    </td>
+</tr>

@@ -1,0 +1,6 @@
+﻿@model int
+
+<template>
+    <tr hx-swap-oob="delete:#product-@Model"></tr>
+</template>
+@await Html.PartialAsync("_InventoryTotalOob")

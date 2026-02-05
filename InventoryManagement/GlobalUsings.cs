@@ -1,0 +1,11 @@
+﻿global using InventoryManagement.Data;
+global using InventoryManagement.Services.Models;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.EntityFrameworkCore;
+global using InventoryManagement.Service.Interfaces;
+global using InventoryManagement.Extensions;
+global using InventoryManagement.Repository.Interfaces;
+global using InventoryManagement.Repository.Services;
+global using InventoryManagement.Service.Services;
+global using Microsoft.AspNetCore.Mvc.Filters;
+global using InventoryManagement.Attributes;

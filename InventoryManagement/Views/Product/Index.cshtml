@@ -1,0 +1,32 @@
+﻿@model IndexViewModel
+
+<hr />
+
+<div id="add-product-form">
+    @await Html.PartialAsync("_AddProductForm", new ProductViewModel())
+</div>
+
+<hr class="mb-5" />
+
+<div class="text-end">
+    <input type="text"
+           name="query"
+           placeholder="Search products..."
+           hx-get="/Product/Search"
+           hx-trigger="keyup changed delay:300ms"
+           hx-target="#product-table"
+           hx-indicator="#search-indicator"
+           hx-swap="innerHTML" />
+</div>
+
+<div class="table-wrapper position-relative">
+    <div id="search-indicator" class="htmx-indicator spinner-overlay">
+        <div class="spinner-border text-primary" role="status"></div>
+    </div>
+
+
+    @await Html.PartialAsync("_ProductTable", Model.Products)
+</div>
+
+
+
