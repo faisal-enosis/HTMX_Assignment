@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace InventoryManagement.Services.Models;
+﻿namespace InventoryManagement.Services.Models;
 
 public class ProductViewModel
 {

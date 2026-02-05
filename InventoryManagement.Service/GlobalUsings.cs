@@ -2,3 +2,4 @@
 global using InventoryManagement.Service.Interfaces;
 global using InventoryManagement.Repository.Interfaces;
 global using InventoryManagement.Services.Models;
+global using System.ComponentModel.DataAnnotations;
