@@ -1,5 +1,9 @@
 ﻿global using InventoryManagement.Data.Entities;
-global using InventoryManagement.Service.Interfaces;
 global using InventoryManagement.Repository.Interfaces;
+global using InventoryManagement.Service.Interfaces;
 global using InventoryManagement.Services.Models;
+global using InventoryManagement.Utility.Enums;
 global using System.ComponentModel.DataAnnotations;
+global using Microsoft.AspNetCore.Mvc.Rendering;
+global using InventoryManagement.Service.Models;
+global using InventoryManagement.Utility;

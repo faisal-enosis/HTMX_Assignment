@@ -9,5 +9,7 @@
         @await Html.PartialAsync("_ProductRow", Model)
     </tbody>
 </template>
-
+<input type="checkbox" id="select-all" hx-swap-oob="true"
+       hx-on:change="document.querySelectorAll('input[name=selectedIds]').forEach(cb => cb.checked = this.checked);
+                              document.getElementById('statusDropdown').disabled=!this.checked;">
 @await Html.PartialAsync("_InventoryTotalOob")

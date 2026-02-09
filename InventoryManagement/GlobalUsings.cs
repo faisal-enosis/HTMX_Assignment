@@ -9,3 +9,6 @@ global using InventoryManagement.Repository.Services;
 global using InventoryManagement.Service.Services;
 global using Microsoft.AspNetCore.Mvc.Filters;
 global using InventoryManagement.Attributes;
+global using InventoryManagement.Utility;
+global using InventoryManagement.Utility.Enums;
+global using InventoryManagement.Service.Models;

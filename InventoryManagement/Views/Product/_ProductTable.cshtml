@@ -3,10 +3,15 @@
 <table border="1" width="100%" id="product-table" class="table">
     <thead>
         <tr>
-            <th width="25%">Name</th>
-            <th width="25%">Desc</th>
-            <th width="25%">Price</th>
-            <th width="25%">Action</th>
+            <th width="5%"><input type="checkbox" id="select-all" 
+                hx-on:change="document.querySelectorAll('input[name=selectedIds]').forEach(cb => cb.checked = this.checked);
+                              document.getElementById('statusDropdown').disabled=!this.checked;">
+            </th>
+            <th width="15%">Name</th>
+            <th width="35%">Desc</th>
+            <th width="10%">Price</th>
+            <th width="15%">Status</th>
+            <th width="20%">Action</th> 
         </tr>
     </thead>
 

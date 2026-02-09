@@ -11,14 +11,14 @@ public class ProductService : IProductService
     public async Task<IndexViewModel> GetIndexPageDataAsync()
     {
         var products = await _productRepository.GetAllAsync();
-        var productVmList = products.Select(product => new ProductViewModel { Id = product.Id, Name = product.Name, Description = product.Description, Price = product.Price }).ToList();
+        var productVmList = products.Select(product => new ProductViewModel { Id = product.Id, Name = product.Name, Description = product.Description, Price = product.Price, Status = product.Status }).ToList();
         return new IndexViewModel { Products = productVmList, TotalPrice = productVmList.Sum(product => product.Price) };
     }
 
     public async Task<ProductViewModel?> GetProductByIdAsync(int id)
     {
         var product = await _productRepository.GetByIdAsync(id);
-        return product == null ? null : new ProductViewModel { Id = product.Id, Name = product.Name, Description = product.Description, Price = product.Price };
+        return product == null ? null : new ProductViewModel { Id = product.Id, Name = product.Name, Description = product.Description, Price = product.Price, Status = product.Status };
     }
 
     public async Task<int> CreateProductAsync(ProductViewModel productVM)
@@ -46,7 +46,8 @@ public class ProductService : IProductService
             Id = product.Id,
             Name = product.Name,
             Description = product.Description,
-            Price = product.Price
+            Price = product.Price,
+            Status = product.Status
         }).ToList();
 
         return productVmList;
@@ -55,5 +56,22 @@ public class ProductService : IProductService
     public async Task<decimal?> GetTotalInventoryValueAsync()
     {
         return await _productRepository.GetTotalInventoryValueAsync();
+    }
+
+    public SelectList GetProductStatusAsDropdown()
+    {
+        return new SelectList(Enum.GetValues(typeof(ProductStatus)).Cast<ProductStatus>().Select(status => new { Id = (int)status, Name = Helper.GetEnumDisplayName(status) }), "Id", "Name");
+    }
+
+    public async Task<ProductStatusCellModel> BulkUpdateProductStatusAsync(List<int> productIds, ProductStatus status)
+    {
+        await _productRepository.BulkUpdateProductStatusAsync(productIds, status);
+        var statusCellModel = new ProductStatusCellModel
+        {
+            StatusCellIds = productIds.Select(id => $"{id}-status").ToList(),
+            Status = status
+        };
+
+        return statusCellModel;
     }
 }

@@ -92,4 +92,12 @@ public class ProductController : Controller
         var productVMList = await _productService.GetSearchDataAsync(query);
         return PartialView("_ProductTable", productVMList);
     }
+
+    [HttpPut]
+    [RequireHtmx]
+    public async Task<IActionResult> BulkUpdateProductStatus(List<int> selectedIds, ProductStatus productStatus)
+    {
+        var statusCellModel = await _productService.BulkUpdateProductStatusAsync(selectedIds, productStatus);
+        return PartialView("_ProductStatusCellOob", statusCellModel);
+    }
 }

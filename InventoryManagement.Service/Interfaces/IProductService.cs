@@ -9,4 +9,6 @@ public interface IProductService
     Task DeleteProductAsync(int id);
     Task<List<ProductViewModel>> GetSearchDataAsync(string? query);
     Task<decimal?> GetTotalInventoryValueAsync();
+    SelectList GetProductStatusAsDropdown();
+    Task<ProductStatusCellModel> BulkUpdateProductStatusAsync(List<int> productIds, ProductStatus status);
 }

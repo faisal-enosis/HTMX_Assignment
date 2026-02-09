@@ -54,4 +54,15 @@ public class ProductRepository : IProductRepository
     {
         return await _context.Products.SumAsync(p => p.Price);
     }
+
+    public async Task BulkUpdateProductStatusAsync(List<int> productIds, ProductStatus status)
+    {
+        var products = await _context.Products.Where(product => productIds.Contains(product.Id)).ToListAsync();
+        foreach (var product in products)
+        {
+            product.Status = status;
+        }
+
+        await _context.SaveChangesAsync();
+    }
 }

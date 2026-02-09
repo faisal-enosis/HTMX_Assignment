@@ -7,6 +7,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\InventoryManagement.Data\InventoryManagement.Data.csproj" />
+		<ProjectReference Include="..\InventoryManagement.Utility\InventoryManagement.Utility.csproj" />
 	</ItemGroup>
 
 </Project>

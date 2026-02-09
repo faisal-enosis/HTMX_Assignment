@@ -1,9 +1,14 @@
 ﻿@model ProductViewModel
 
+
 <tr id="product-@Model.Id">
+    <td>
+        <input type="checkbox" name="selectedIds" value="@Model.Id" hx-on:change="document.getElementById('statusDropdown').disabled = !document.querySelector('input[name=selectedIds]:checked');document.getElementById('select-all').checked = Array.from(document.querySelectorAll('input[name =selectedIds]')).every(cb => cb.checked);">
+    </td>
     <td>@Model.Name</td>
     <td>@Model.Description</td>
     <td>$@Model.Price</td>
+    <td><span id="#@Model.Id-status">@Helper.GetEnumDisplayName(Model.Status)</span></td>
     <td>
         <button hx-get="/Product/Edit/@Model.Id"
                 hx-target="closest tr"

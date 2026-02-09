@@ -9,4 +9,5 @@ public interface IProductRepository
     Task DeleteAsync(int id);
     Task<List<Product>> SearchAsync(string query);
     Task<decimal?> GetTotalInventoryValueAsync();
+    Task BulkUpdateProductStatusAsync(List<int> productIds, ProductStatus status);
 }

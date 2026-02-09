@@ -1,4 +1,6 @@
 ﻿@model IndexViewModel
+@inject IProductService productService
+
 
 <hr />
 
@@ -8,15 +10,31 @@
 
 <hr class="mb-5" />
 
-<div class="text-end">
-    <input type="text"
-           name="query"
-           placeholder="Search products..."
-           hx-get="/Product/Search"
-           hx-trigger="keyup changed delay:300ms"
-           hx-target="#product-table"
-           hx-indicator="#search-indicator"
-           hx-swap="innerHTML" />
+
+<div class="d-flex justify-content-between mb-2">
+    <div>
+        <span>Update status:</span>
+        <select asp-items="productService.GetProductStatusAsDropdown()"
+                name="productStatus"
+                hx-put="/Product/BulkUpdateProductStatus"
+                hx-include="input[name='selectedIds']:checked"
+                hx-confirm="Update selected products?"
+                id="statusDropdown"
+                hx-swap="none"
+                disabled
+        >
+        </select>
+    </div>
+    <div>
+        <input type="text"
+               name="query"
+               placeholder="Search products..."
+               hx-get="/Product/Search"
+               hx-trigger="keyup changed delay:300ms"
+               hx-target="#product-table"
+               hx-indicator="#search-indicator"
+               hx-swap="innerHTML" />
+    </div>
 </div>
 
 <div class="table-wrapper position-relative">
