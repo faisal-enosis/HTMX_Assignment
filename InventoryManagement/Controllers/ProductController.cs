@@ -25,7 +25,7 @@ public class ProductController : Controller
         }
 
         var productVm = await _productService.GetProductByIdAsync(id);
-        return PartialView("_ProductRow", productVm);
+        return PartialView("_ReadOnlyProductResponse", productVm);
     }
 
     [HttpPost]

@@ -1,36 +1,31 @@
 ﻿@model ProductViewModel
 
-<tr id="product-@Model.Id">
-    <td>
+<template>
+    <td id="@Model.Id-name" hx-swap-oob="true">
         <input name="Name" value="@Model.Name" />
         <div>
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
     </td>
 
-    <td>
+    <td id="@Model.Id-desc" hx-swap-oob="true">
         <input name="Description" value="@Model.Description" />
     </td>
 
-    <td>
+    <td id="@Model.Id-price" hx-swap-oob="true">
         <input name="Price" value="@Model.Price" />
         <div>
             <span asp-validation-for="Price" class="text-danger"></span>
         </div>
     </td>
 
-    <td>
+    <td id="@Model.Id-action" hx-swap-oob="true">
         <button hx-put="/Product/Edit/@Model.Id"
-                hx-target="closest tr"
-                hx-include="closest tr"
-                hx-swap="outerHTML">
+                hx-include="closest tr">
             Save
         </button>
 
-        <button hx-get="/Product/ReadOnly/@Model.Id"
-                hx-target="closest tr"
-                hx-swap="outerHTML">
-            Cancel
-        </button>
+        <button hx-get="/Product/ReadOnly/@Model.Id">Cancel</button>
     </td>
-</tr>
+</template>
+

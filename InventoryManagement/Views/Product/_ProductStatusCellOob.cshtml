@@ -2,5 +2,5 @@
 
 @foreach (var statusCellId in Model.StatusCellIds)
 {
-    <span hx-swap-oob="true" id="#@statusCellId">@Helper.GetEnumDisplayName(@Model.Status)</span>
+    <span hx-swap-oob="true" id="@statusCellId">@Helper.GetEnumDisplayName(@Model.Status)</span>
 }

@@ -3,7 +3,7 @@
 <template>
     <td id="@Model.Id-name" hx-swap-oob="true">@Model.Name</td>
     <td id="@Model.Id-desc" hx-swap-oob="true">@Model.Description</td>
-    <td id="@Model.Id-price" hx-swap-oob="true">@Model.Price</td>
+    <td id="@Model.Id-price" hx-swap-oob="true">$@Model.Price</td>
     <td id="@Model.Id-action" hx-swap-oob="true">
         <button hx-get="/Product/Edit/@Model.Id">Edit</button>
         <button hx-delete="/Product/Delete/@Model.Id"
@@ -14,5 +14,3 @@
         </button>
     </td>
 </template>
-
-@await Html.PartialAsync("_InventoryTotalOob")
